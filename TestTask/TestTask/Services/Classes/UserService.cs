@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TestTask.Data;
+using TestTask.Enums;
 using TestTask.Models;
 using TestTask.Services.Interfaces;
 
@@ -35,8 +36,7 @@ namespace TestTask.Services.Classes
         {
             try
             {
-                const int inaсtiveStatus = 0;
-                var users = await context.Users.Where(x => x.Status == inaсtiveStatus).ToListAsync();
+                var users = await context.Users.Where(x => x.Status == UserStatus.Inactive).ToListAsync();
                 return users;
             }
             catch (Exception ex)
